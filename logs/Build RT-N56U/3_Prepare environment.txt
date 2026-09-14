@@ -1,0 +1,171 @@
+﻿2026-09-14T16:28:23.4927918Z ##[group]Run sudo apt-get update
+2026-09-14T16:28:23.4929471Z [36;1msudo apt-get update[0m
+2026-09-14T16:28:23.4931519Z [36;1msudo apt-get install -y libtool-bin gperf python3-docutils autopoint gettext[0m
+2026-09-14T16:28:23.4933951Z [36;1msudo timedatectl set-timezone 'Asia/Shanghai'[0m
+2026-09-14T16:28:23.4966726Z shell: /usr/bin/bash -e {0}
+2026-09-14T16:28:23.4967998Z env:
+2026-09-14T16:28:23.4969039Z   build_dir: /opt/rt-n56u
+2026-09-14T16:28:23.4970297Z   images_dir: /opt/images
+2026-09-14T16:28:23.4971499Z   work_dir: /opt/rt-n56u/trunk
+2026-09-14T16:28:23.4973006Z   src_git: https://github.com/hanwckf/rt-n56u.git
+2026-09-14T16:28:23.4974662Z   config_dir: /opt/rt-n56u/trunk/configs/templates
+2026-09-14T16:28:23.4976543Z   toolchain_dir: /opt/rt-n56u/toolchain-mipsel/toolchain-3.4.x
+2026-09-14T16:28:23.4978427Z   toolchain_pkg: mipsel-linux-uclibc.tar.xz
+2026-09-14T16:28:23.4980554Z   toolchain_url: https://github.com/TurBoTse/padavan-toolchain/releases/download/v1.0
+2026-09-14T16:28:23.4982997Z   models: rt-n56u R6220
+2026-09-14T16:28:23.4984140Z ##[endgroup]
+2026-09-14T16:28:23.5742231Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+2026-09-14T16:28:23.6278757Z Hit:2 http://azure.archive.ubuntu.com/ubuntu noble InRelease
+2026-09-14T16:28:23.6286821Z Get:6 https://packages.microsoft.com/ubuntu/24.04/prod noble InRelease [3600 B]
+2026-09-14T16:28:23.6337578Z Get:3 http://azure.archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
+2026-09-14T16:28:23.6446581Z Get:4 http://azure.archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB]
+2026-09-14T16:28:23.6458020Z Get:5 http://azure.archive.ubuntu.com/ubuntu noble-security InRelease [126 kB]
+2026-09-14T16:28:23.7061379Z Get:7 https://dl.google.com/linux/chrome-stable/deb stable InRelease [2548 B]
+2026-09-14T16:28:23.7481607Z Get:8 https://packages.microsoft.com/ubuntu/24.04/prod noble/main amd64 Packages [464 kB]
+2026-09-14T16:28:23.7629143Z Get:9 https://packages.microsoft.com/ubuntu/24.04/prod noble/main arm64 Packages [415 kB]
+2026-09-14T16:28:23.7908686Z Get:10 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages [1263 kB]
+2026-09-14T16:28:23.7966227Z Get:11 http://azure.archive.ubuntu.com/ubuntu noble-updates/main Translation-en [292 kB]
+2026-09-14T16:28:23.7984176Z Get:12 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 Components [181 kB]
+2026-09-14T16:28:23.7997901Z Get:13 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages [1691 kB]
+2026-09-14T16:28:23.8080925Z Get:14 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe Translation-en [339 kB]
+2026-09-14T16:28:23.8102873Z Get:15 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Components [388 kB]
+2026-09-14T16:28:23.8124238Z Get:16 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Packages [1544 kB]
+2026-09-14T16:28:23.8206954Z Get:17 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted Translation-en [354 kB]
+2026-09-14T16:28:23.8227455Z Get:18 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Components [940 B]
+2026-09-14T16:28:23.8418901Z Get:19 http://azure.archive.ubuntu.com/ubuntu noble-backports/main amd64 Components [5772 B]
+2026-09-14T16:28:23.8893708Z Get:20 http://azure.archive.ubuntu.com/ubuntu noble-backports/universe amd64 Components [12.6 kB]
+2026-09-14T16:28:23.8916154Z Get:21 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 Packages [1007 kB]
+2026-09-14T16:28:23.8956761Z Get:22 http://azure.archive.ubuntu.com/ubuntu noble-security/main Translation-en [213 kB]
+2026-09-14T16:28:23.8969719Z Get:23 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 Components [46.4 kB]
+2026-09-14T16:28:23.8976033Z Get:24 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 Packages [1207 kB]
+2026-09-14T16:28:23.9035045Z Get:25 http://azure.archive.ubuntu.com/ubuntu noble-security/universe Translation-en [242 kB]
+2026-09-14T16:28:23.9061884Z Get:26 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 Components [76.3 kB]
+2026-09-14T16:28:23.9066637Z Get:27 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted amd64 Packages [1445 kB]
+2026-09-14T16:28:23.9125042Z Get:28 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted Translation-en [336 kB]
+2026-09-14T16:28:23.9786031Z Get:29 https://dl.google.com/linux/chrome-stable/deb stable/main amd64 Packages [1410 B]
+2026-09-14T16:28:28.4264480Z Fetched 11.9 MB in 1s (8418 kB/s)
+2026-09-14T16:28:29.2664866Z Reading package lists...
+2026-09-14T16:28:29.2997928Z Reading package lists...
+2026-09-14T16:28:29.4822134Z Building dependency tree...
+2026-09-14T16:28:29.4830360Z Reading state information...
+2026-09-14T16:28:29.6532231Z The following additional packages will be installed:
+2026-09-14T16:28:29.6538888Z   docutils-common libimagequant0 libpaper-utils libpaper1 libraqm0
+2026-09-14T16:28:29.6540134Z   python3-olefile python3-pil python3-roman
+2026-09-14T16:28:29.6554577Z Suggested packages:
+2026-09-14T16:28:29.6555462Z   gettext-doc libasprintf-dev libgettextpo-dev docutils-doc
+2026-09-14T16:28:29.6556258Z   fonts-linuxlibertine | ttf-linux-libertine texlive-lang-french
+2026-09-14T16:28:29.6557061Z   texlive-latex-base texlive-latex-recommended python-pil-doc
+2026-09-14T16:28:29.7183570Z The following NEW packages will be installed:
+2026-09-14T16:28:29.7188247Z   autopoint docutils-common gettext gperf libimagequant0 libpaper-utils
+2026-09-14T16:28:29.7195307Z   libpaper1 libraqm0 libtool-bin python3-docutils python3-olefile python3-pil
+2026-09-14T16:28:29.7196362Z   python3-roman
+2026-09-14T16:28:29.7365528Z 0 upgraded, 13 newly installed, 0 to remove and 52 not upgraded.
+2026-09-14T16:28:29.7366219Z Need to get 2567 kB of archives.
+2026-09-14T16:28:29.8176570Z After this operation, 8410 kB of additional disk space will be used.
+2026-09-14T16:28:29.8177332Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+2026-09-14T16:28:29.8178597Z Get:2 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 autopoint all 0.21-14ubuntu2 [422 kB]
+2026-09-14T16:28:29.8678805Z Get:3 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 docutils-common all 0.20.1+dfsg-3 [132 kB]
+2026-09-14T16:28:29.9151080Z Get:4 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 gettext amd64 0.21-14ubuntu2 [864 kB]
+2026-09-14T16:28:29.9667403Z Get:5 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 gperf amd64 3.1-1build1 [103 kB]
+2026-09-14T16:28:30.0142289Z Get:6 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libimagequant0 amd64 2.18.0-1build1 [36.3 kB]
+2026-09-14T16:28:30.0611962Z Get:7 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libpaper1 amd64 1.1.29build1 [13.4 kB]
+2026-09-14T16:28:30.1085985Z Get:8 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libpaper-utils amd64 1.1.29build1 [8650 B]
+2026-09-14T16:28:30.1554503Z Get:9 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libraqm0 amd64 0.10.1-1build1 [15.0 kB]
+2026-09-14T16:28:30.2021893Z Get:10 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libtool-bin amd64 2.4.7-7build1 [84.1 kB]
+2026-09-14T16:28:30.2493488Z Get:11 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 python3-roman all 3.3-3 [9632 B]
+2026-09-14T16:28:30.2958679Z Get:12 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 python3-docutils all 0.20.1+dfsg-3 [393 kB]
+2026-09-14T16:28:30.3454859Z Get:13 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 python3-olefile all 0.46-3 [33.8 kB]
+2026-09-14T16:28:30.3924017Z Get:14 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 python3-pil amd64 10.2.0-1ubuntu1.3 [452 kB]
+2026-09-14T16:28:30.6235857Z Preconfiguring packages ...
+2026-09-14T16:28:30.6909530Z Fetched 2567 kB in 1s (3845 kB/s)
+2026-09-14T16:28:30.7120180Z Selecting previously unselected package autopoint.
+2026-09-14T16:28:30.7376291Z (Reading database ... 
+2026-09-14T16:28:30.7377037Z (Reading database ... 5%
+2026-09-14T16:28:30.7377678Z (Reading database ... 10%
+2026-09-14T16:28:30.7378883Z (Reading database ... 15%
+2026-09-14T16:28:30.7379485Z (Reading database ... 20%
+2026-09-14T16:28:30.7380287Z (Reading database ... 25%
+2026-09-14T16:28:30.7380778Z (Reading database ... 30%
+2026-09-14T16:28:30.7381384Z (Reading database ... 35%
+2026-09-14T16:28:30.7381815Z (Reading database ... 40%
+2026-09-14T16:28:30.7382299Z (Reading database ... 45%
+2026-09-14T16:28:30.7382927Z (Reading database ... 50%
+2026-09-14T16:28:30.7433287Z (Reading database ... 55%
+2026-09-14T16:28:30.8617664Z (Reading database ... 60%
+2026-09-14T16:28:31.0555179Z (Reading database ... 65%
+2026-09-14T16:28:31.2104991Z (Reading database ... 70%
+2026-09-14T16:28:31.4043998Z (Reading database ... 75%
+2026-09-14T16:28:31.5695999Z (Reading database ... 80%
+2026-09-14T16:28:31.7957638Z (Reading database ... 85%
+2026-09-14T16:28:31.9686437Z (Reading database ... 90%
+2026-09-14T16:28:32.1404216Z (Reading database ... 95%
+2026-09-14T16:28:32.1405190Z (Reading database ... 100%
+2026-09-14T16:28:32.1405966Z (Reading database ... 201818 files and directories currently installed.)
+2026-09-14T16:28:32.1452455Z Preparing to unpack .../00-autopoint_0.21-14ubuntu2_all.deb ...
+2026-09-14T16:28:32.1583090Z Unpacking autopoint (0.21-14ubuntu2) ...
+2026-09-14T16:28:32.1867606Z Selecting previously unselected package docutils-common.
+2026-09-14T16:28:32.1993196Z Preparing to unpack .../01-docutils-common_0.20.1+dfsg-3_all.deb ...
+2026-09-14T16:28:32.2086186Z Unpacking docutils-common (0.20.1+dfsg-3) ...
+2026-09-14T16:28:32.2499911Z Selecting previously unselected package gettext.
+2026-09-14T16:28:32.2622644Z Preparing to unpack .../02-gettext_0.21-14ubuntu2_amd64.deb ...
+2026-09-14T16:28:32.2652329Z Unpacking gettext (0.21-14ubuntu2) ...
+2026-09-14T16:28:32.3106891Z Selecting previously unselected package gperf.
+2026-09-14T16:28:32.3229045Z Preparing to unpack .../03-gperf_3.1-1build1_amd64.deb ...
+2026-09-14T16:28:32.3247001Z Unpacking gperf (3.1-1build1) ...
+2026-09-14T16:28:32.3515547Z Selecting previously unselected package libimagequant0:amd64.
+2026-09-14T16:28:32.3638637Z Preparing to unpack .../04-libimagequant0_2.18.0-1build1_amd64.deb ...
+2026-09-14T16:28:32.3655672Z Unpacking libimagequant0:amd64 (2.18.0-1build1) ...
+2026-09-14T16:28:32.3861789Z Selecting previously unselected package libpaper1:amd64.
+2026-09-14T16:28:32.3987214Z Preparing to unpack .../05-libpaper1_1.1.29build1_amd64.deb ...
+2026-09-14T16:28:32.4001300Z Unpacking libpaper1:amd64 (1.1.29build1) ...
+2026-09-14T16:28:32.4195554Z Selecting previously unselected package libpaper-utils.
+2026-09-14T16:28:32.4320250Z Preparing to unpack .../06-libpaper-utils_1.1.29build1_amd64.deb ...
+2026-09-14T16:28:32.4333423Z Unpacking libpaper-utils (1.1.29build1) ...
+2026-09-14T16:28:32.4659987Z Selecting previously unselected package libraqm0:amd64.
+2026-09-14T16:28:32.4783702Z Preparing to unpack .../07-libraqm0_0.10.1-1build1_amd64.deb ...
+2026-09-14T16:28:32.4796634Z Unpacking libraqm0:amd64 (0.10.1-1build1) ...
+2026-09-14T16:28:32.4972775Z Selecting previously unselected package libtool-bin.
+2026-09-14T16:28:32.5095410Z Preparing to unpack .../08-libtool-bin_2.4.7-7build1_amd64.deb ...
+2026-09-14T16:28:32.5108321Z Unpacking libtool-bin (2.4.7-7build1) ...
+2026-09-14T16:28:32.5327262Z Selecting previously unselected package python3-roman.
+2026-09-14T16:28:32.5445958Z Preparing to unpack .../09-python3-roman_3.3-3_all.deb ...
+2026-09-14T16:28:32.5459910Z Unpacking python3-roman (3.3-3) ...
+2026-09-14T16:28:32.5652470Z Selecting previously unselected package python3-docutils.
+2026-09-14T16:28:32.5773591Z Preparing to unpack .../10-python3-docutils_0.20.1+dfsg-3_all.deb ...
+2026-09-14T16:28:32.5805303Z Unpacking python3-docutils (0.20.1+dfsg-3) ...
+2026-09-14T16:28:32.6234636Z Selecting previously unselected package python3-olefile.
+2026-09-14T16:28:32.6359426Z Preparing to unpack .../11-python3-olefile_0.46-3_all.deb ...
+2026-09-14T16:28:32.6374695Z Unpacking python3-olefile (0.46-3) ...
+2026-09-14T16:28:32.6595622Z Selecting previously unselected package python3-pil:amd64.
+2026-09-14T16:28:32.6717690Z Preparing to unpack .../12-python3-pil_10.2.0-1ubuntu1.3_amd64.deb ...
+2026-09-14T16:28:32.6731803Z Unpacking python3-pil:amd64 (10.2.0-1ubuntu1.3) ...
+2026-09-14T16:28:32.7485998Z Setting up libpaper1:amd64 (1.1.29build1) ...
+2026-09-14T16:28:32.8838888Z 
+2026-09-14T16:28:32.8839896Z Creating config file /etc/papersize with new version
+2026-09-14T16:28:32.9360539Z Setting up libtool-bin (2.4.7-7build1) ...
+2026-09-14T16:28:32.9391530Z Setting up gettext (0.21-14ubuntu2) ...
+2026-09-14T16:28:32.9421542Z Setting up python3-olefile (0.46-3) ...
+2026-09-14T16:28:33.0525907Z Setting up libpaper-utils (1.1.29build1) ...
+2026-09-14T16:28:33.0554740Z Setting up gperf (3.1-1build1) ...
+2026-09-14T16:28:33.0596092Z Setting up python3-roman (3.3-3) ...
+2026-09-14T16:28:33.1665599Z Setting up libraqm0:amd64 (0.10.1-1build1) ...
+2026-09-14T16:28:33.1696763Z Setting up libimagequant0:amd64 (2.18.0-1build1) ...
+2026-09-14T16:28:33.1727801Z Setting up autopoint (0.21-14ubuntu2) ...
+2026-09-14T16:28:33.1760111Z Setting up docutils-common (0.20.1+dfsg-3) ...
+2026-09-14T16:28:33.2491471Z Setting up python3-pil:amd64 (10.2.0-1ubuntu1.3) ...
+2026-09-14T16:28:33.5073640Z Processing triggers for install-info (7.1-3build2) ...
+2026-09-14T16:28:33.6203591Z Processing triggers for libc-bin (2.39-0ubuntu8.8) ...
+2026-09-14T16:28:33.6537119Z Processing triggers for man-db (2.12.0-4build2) ...
+2026-09-14T16:28:33.6565054Z Not building database; man-db/auto-update is not 'true'.
+2026-09-14T16:28:33.6581641Z Processing triggers for sgml-base (1.31) ...
+2026-09-14T16:28:33.6698698Z Setting up python3-docutils (0.20.1+dfsg-3) ...
+2026-09-14T16:28:34.5339280Z 
+2026-09-14T16:28:34.5340153Z Running kernel seems to be up-to-date.
+2026-09-14T16:28:34.5340528Z 
+2026-09-14T16:28:34.5340740Z No services need to be restarted.
+2026-09-14T16:28:34.5341287Z 
+2026-09-14T16:28:34.5341602Z No containers need to be restarted.
+2026-09-14T16:28:34.5341860Z 
+2026-09-14T16:28:34.5342082Z No user sessions are running outdated binaries.
+2026-09-14T16:28:34.5342390Z 
+2026-09-14T16:28:34.5342928Z No VM guests are running outdated hypervisor (qemu) binaries on this host.

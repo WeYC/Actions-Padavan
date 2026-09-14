@@ -1,0 +1,27 @@
+﻿2026-09-14T16:28:52.8949594Z ##[group]Run mkdir -p /opt/rt-n56u/toolchain-mipsel/toolchain-3.4.x
+2026-09-14T16:28:52.8950204Z [36;1mmkdir -p /opt/rt-n56u/toolchain-mipsel/toolchain-3.4.x[0m
+2026-09-14T16:28:52.8950891Z [36;1mcurl -LO https://github.com/TurBoTse/padavan-toolchain/releases/download/v1.0/mipsel-linux-uclibc.tar.xz[0m
+2026-09-14T16:28:52.8951642Z [36;1mtar -xf mipsel-linux-uclibc.tar.xz -C /opt/rt-n56u/toolchain-mipsel/toolchain-3.4.x[0m
+2026-09-14T16:28:52.8952179Z [36;1mrm -f mipsel-linux-uclibc.tar.xz[0m
+2026-09-14T16:28:52.8976104Z shell: /usr/bin/bash -e {0}
+2026-09-14T16:28:52.8976459Z env:
+2026-09-14T16:28:52.8976857Z   build_dir: /opt/rt-n56u
+2026-09-14T16:28:52.8977194Z   images_dir: /opt/images
+2026-09-14T16:28:52.8977574Z   work_dir: /opt/rt-n56u/trunk
+2026-09-14T16:28:52.8977963Z   src_git: https://github.com/hanwckf/rt-n56u.git
+2026-09-14T16:28:52.8978375Z   config_dir: /opt/rt-n56u/trunk/configs/templates
+2026-09-14T16:28:52.8978867Z   toolchain_dir: /opt/rt-n56u/toolchain-mipsel/toolchain-3.4.x
+2026-09-14T16:28:52.8979421Z   toolchain_pkg: mipsel-linux-uclibc.tar.xz
+2026-09-14T16:28:52.8979999Z   toolchain_url: https://github.com/TurBoTse/padavan-toolchain/releases/download/v1.0
+2026-09-14T16:28:52.8980485Z   models: rt-n56u R6220
+2026-09-14T16:28:52.8980792Z ##[endgroup]
+2026-09-14T16:28:52.9121177Z   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+2026-09-14T16:28:52.9121878Z                                  Dload  Upload   Total   Spent    Left  Speed
+2026-09-14T16:28:52.9122263Z 
+2026-09-14T16:28:53.1543203Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+2026-09-14T16:28:53.1543976Z 100     9  100     9    0     0     37      0 --:--:-- --:--:-- --:--:--    37
+2026-09-14T16:28:53.1575463Z tar: This does not look like a tar archive
+2026-09-14T16:28:53.1680239Z xz: (stdin): File format not recognized
+2026-09-14T16:28:53.1681203Z tar: Child returned status 1
+2026-09-14T16:28:53.1681761Z tar: Error is not recoverable: exiting now
+2026-09-14T16:28:53.1697103Z ##[error]Process completed with exit code 2.
