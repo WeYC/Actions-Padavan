@@ -1,0 +1,25 @@
+﻿2026-09-14T16:31:38.6406586Z ##[group]Run mkdir -p /opt/rt-n56u/toolchain-mipsel/toolchain-3.4.x
+2026-09-14T16:31:38.6407124Z [36;1mmkdir -p /opt/rt-n56u/toolchain-mipsel/toolchain-3.4.x[0m
+2026-09-14T16:31:38.6407788Z [36;1mcurl -LO https://github.com/TurBoTse/padavan-toolchain/releases/download/toolchain/mipsel-linux-uclibc.tar.xz[0m
+2026-09-14T16:31:38.6408822Z [36;1mtar -xf mipsel-linux-uclibc.tar.xz -C /opt/rt-n56u/toolchain-mipsel/toolchain-3.4.x[0m
+2026-09-14T16:31:38.6409501Z [36;1mrm -f mipsel-linux-uclibc.tar.xz[0m
+2026-09-14T16:31:38.6449479Z shell: /usr/bin/bash -e {0}
+2026-09-14T16:31:38.6449769Z env:
+2026-09-14T16:31:38.6450000Z   build_dir: /opt/rt-n56u
+2026-09-14T16:31:38.6450248Z   images_dir: /opt/images
+2026-09-14T16:31:38.6450496Z   work_dir: /opt/rt-n56u/trunk
+2026-09-14T16:31:38.6450793Z   src_git: https://github.com/hanwckf/rt-n56u.git
+2026-09-14T16:31:38.6451142Z   config_dir: /opt/rt-n56u/trunk/configs/templates
+2026-09-14T16:31:38.6451513Z   toolchain_dir: /opt/rt-n56u/toolchain-mipsel/toolchain-3.4.x
+2026-09-14T16:31:38.6451968Z   toolchain_pkg: mipsel-linux-uclibc.tar.xz
+2026-09-14T16:31:38.6452426Z   toolchain_url: https://github.com/TurBoTse/padavan-toolchain/releases/download/toolchain
+2026-09-14T16:31:38.6452857Z   models: rt-n56u R6220
+2026-09-14T16:31:38.6453095Z ##[endgroup]
+2026-09-14T16:31:38.6763624Z   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+2026-09-14T16:31:38.6764281Z                                  Dload  Upload   Total   Spent    Left  Speed
+2026-09-14T16:31:38.6764662Z 
+2026-09-14T16:31:38.8341422Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+2026-09-14T16:31:38.8342162Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+2026-09-14T16:31:39.3549112Z 
+2026-09-14T16:31:39.7931331Z  49 41.0M   49 20.4M    0     0  30.1M      0  0:00:01 --:--:--  0:00:01 30.1M
+2026-09-14T16:31:39.7932123Z 100 41.0M  100 41.0M    0     0  36.7M      0  0:00:01  0:00:01 --:--:-- 47.0M

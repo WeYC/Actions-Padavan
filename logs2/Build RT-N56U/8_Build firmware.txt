@@ -1,0 +1,32 @@
+﻿2026-09-14T16:31:42.7159527Z ##[group]Run cd /opt/rt-n56u/trunk
+2026-09-14T16:31:42.7159882Z [36;1mcd /opt/rt-n56u/trunk[0m
+2026-09-14T16:31:42.7160145Z [36;1mfor model in rt-n56u R6220; do[0m
+2026-09-14T16:31:42.7160430Z [36;1m  echo "Building $model..."[0m
+2026-09-14T16:31:42.7160721Z [36;1m  sudo ./build_firmware_ci $model[0m
+2026-09-14T16:31:42.7161020Z [36;1m  if [ $? -eq 0 ]; then[0m
+2026-09-14T16:31:42.7161390Z [36;1m    sudo cp -f images/*.trx /opt/images/Hanwckf_${model}_$(date +%Y%m%d).trx[0m
+2026-09-14T16:31:42.7161797Z [36;1m    echo "Build $model succeeded"[0m
+2026-09-14T16:31:42.7162069Z [36;1m  else[0m
+2026-09-14T16:31:42.7162291Z [36;1m    echo "Build $model failed"[0m
+2026-09-14T16:31:42.7162564Z [36;1m    exit 1[0m
+2026-09-14T16:31:42.7162772Z [36;1m  fi[0m
+2026-09-14T16:31:42.7163015Z [36;1m  sudo ./clear_tree_simple >/dev/null 2>&1[0m
+2026-09-14T16:31:42.7163306Z [36;1mdone[0m
+2026-09-14T16:31:42.7203530Z shell: /usr/bin/bash -e {0}
+2026-09-14T16:31:42.7203822Z env:
+2026-09-14T16:31:42.7204119Z   build_dir: /opt/rt-n56u
+2026-09-14T16:31:42.7204360Z   images_dir: /opt/images
+2026-09-14T16:31:42.7204597Z   work_dir: /opt/rt-n56u/trunk
+2026-09-14T16:31:42.7204907Z   src_git: https://github.com/hanwckf/rt-n56u.git
+2026-09-14T16:31:42.7205260Z   config_dir: /opt/rt-n56u/trunk/configs/templates
+2026-09-14T16:31:42.7205635Z   toolchain_dir: /opt/rt-n56u/toolchain-mipsel/toolchain-3.4.x
+2026-09-14T16:31:42.7206007Z   toolchain_pkg: mipsel-linux-uclibc.tar.xz
+2026-09-14T16:31:42.7206462Z   toolchain_url: https://github.com/TurBoTse/padavan-toolchain/releases/download/toolchain
+2026-09-14T16:31:42.7206907Z   models: rt-n56u R6220
+2026-09-14T16:31:42.7207140Z ##[endgroup]
+2026-09-14T16:31:42.7272549Z Building rt-n56u...
+2026-09-14T16:31:42.7346572Z ======================= BUILD_CI rt-n56u =======================
+2026-09-14T16:31:52.7364605Z ====================================================================================================
+2026-09-14T16:31:52.7541662Z Build script is exited
+2026-09-14T16:31:52.7610075Z configs/templates/rt-n56u.config not found!
+2026-09-14T16:31:52.7638797Z ##[error]Process completed with exit code 1.

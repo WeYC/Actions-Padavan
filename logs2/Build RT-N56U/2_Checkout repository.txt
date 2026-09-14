@@ -1,0 +1,84 @@
+﻿2026-09-14T16:31:04.2860188Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-09-14T16:31:04.2869764Z ##[group]Run actions/checkout@v4
+2026-09-14T16:31:04.2870485Z with:
+2026-09-14T16:31:04.2870953Z   repository: WeYC/Actions-Padavan
+2026-09-14T16:31:04.2875117Z   token: ***
+2026-09-14T16:31:04.2875564Z   ssh-strict: true
+2026-09-14T16:31:04.2876021Z   ssh-user: git
+2026-09-14T16:31:04.2876464Z   persist-credentials: true
+2026-09-14T16:31:04.2876950Z   clean: true
+2026-09-14T16:31:04.2877397Z   sparse-checkout-cone-mode: true
+2026-09-14T16:31:04.2877909Z   fetch-depth: 1
+2026-09-14T16:31:04.2878818Z   fetch-tags: false
+2026-09-14T16:31:04.2879276Z   show-progress: true
+2026-09-14T16:31:04.2879751Z   lfs: false
+2026-09-14T16:31:04.2880160Z   submodules: false
+2026-09-14T16:31:04.2880664Z   set-safe-directory: true
+2026-09-14T16:31:04.2881168Z   allow-unsafe-pr-checkout: false
+2026-09-14T16:31:04.2881948Z env:
+2026-09-14T16:31:04.2882363Z   build_dir: /opt/rt-n56u
+2026-09-14T16:31:04.2882840Z   images_dir: /opt/images
+2026-09-14T16:31:04.2883311Z   work_dir: /opt/rt-n56u/trunk
+2026-09-14T16:31:04.2883862Z   src_git: https://github.com/hanwckf/rt-n56u.git
+2026-09-14T16:31:04.2884508Z   config_dir: /opt/rt-n56u/trunk/configs/templates
+2026-09-14T16:31:04.2885221Z   toolchain_dir: /opt/rt-n56u/toolchain-mipsel/toolchain-3.4.x
+2026-09-14T16:31:04.2885914Z   toolchain_pkg: mipsel-linux-uclibc.tar.xz
+2026-09-14T16:31:04.2886738Z   toolchain_url: https://github.com/TurBoTse/padavan-toolchain/releases/download/toolchain
+2026-09-14T16:31:04.2887538Z   models: rt-n56u R6220
+2026-09-14T16:31:04.2888111Z ##[endgroup]
+2026-09-14T16:31:04.3997469Z Syncing repository: WeYC/Actions-Padavan
+2026-09-14T16:31:04.4005037Z ##[group]Getting Git version info
+2026-09-14T16:31:04.4006298Z Working directory is '/home/runner/work/Actions-Padavan/Actions-Padavan'
+2026-09-14T16:31:04.4039876Z [command]/usr/bin/git version
+2026-09-14T16:31:04.4131543Z git version 2.55.0
+2026-09-14T16:31:04.4158511Z ##[endgroup]
+2026-09-14T16:31:04.4175476Z Temporarily overriding HOME='/home/runner/work/_temp/7fa50e9d-fdca-43ea-89d2-f13d8ee9a448' before making global git config changes
+2026-09-14T16:31:04.4178386Z Adding repository directory to the temporary git global config as a safe directory
+2026-09-14T16:31:04.4195261Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/Actions-Padavan/Actions-Padavan
+2026-09-14T16:31:04.4270746Z Deleting the contents of '/home/runner/work/Actions-Padavan/Actions-Padavan'
+2026-09-14T16:31:04.4275157Z ##[group]Initializing the repository
+2026-09-14T16:31:04.4279912Z [command]/usr/bin/git init /home/runner/work/Actions-Padavan/Actions-Padavan
+2026-09-14T16:31:04.4384764Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-09-14T16:31:04.4395977Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-09-14T16:31:04.4397611Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-09-14T16:31:04.4399052Z hint: call:
+2026-09-14T16:31:04.4399680Z hint:
+2026-09-14T16:31:04.4400460Z hint: 	git config --global init.defaultBranch <name>
+2026-09-14T16:31:04.4401639Z hint:
+2026-09-14T16:31:04.4402595Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-09-14T16:31:04.4404104Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-09-14T16:31:04.4405279Z hint:
+2026-09-14T16:31:04.4405921Z hint: 	git branch -m <name>
+2026-09-14T16:31:04.4406648Z hint:
+2026-09-14T16:31:04.4407648Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-09-14T16:31:04.4409581Z Initialized empty Git repository in /home/runner/work/Actions-Padavan/Actions-Padavan/.git/
+2026-09-14T16:31:04.4412476Z [command]/usr/bin/git remote add origin https://github.com/WeYC/Actions-Padavan
+2026-09-14T16:31:04.4465168Z ##[endgroup]
+2026-09-14T16:31:04.4466448Z ##[group]Disabling automatic garbage collection
+2026-09-14T16:31:04.4470942Z [command]/usr/bin/git config --local gc.auto 0
+2026-09-14T16:31:04.4522703Z ##[endgroup]
+2026-09-14T16:31:04.4524055Z ##[group]Setting up auth
+2026-09-14T16:31:04.4525419Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-09-14T16:31:04.4605178Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-09-14T16:31:04.4993770Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-09-14T16:31:04.5043602Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-09-14T16:31:04.5303110Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-09-14T16:31:04.5348543Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-09-14T16:31:04.5611757Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-09-14T16:31:04.5658850Z ##[endgroup]
+2026-09-14T16:31:04.5659915Z ##[group]Fetching the repository
+2026-09-14T16:31:04.5671595Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +efd59c51643d9eb9be1357b77366d27536bc99cc:refs/remotes/origin/main
+2026-09-14T16:31:04.8509272Z From https://github.com/WeYC/Actions-Padavan
+2026-09-14T16:31:04.8511133Z  * [new ref]         efd59c51643d9eb9be1357b77366d27536bc99cc -> origin/main
+2026-09-14T16:31:04.8515867Z ##[endgroup]
+2026-09-14T16:31:04.8517485Z ##[group]Determining the checkout info
+2026-09-14T16:31:04.8519329Z ##[endgroup]
+2026-09-14T16:31:04.8524751Z [command]/usr/bin/git sparse-checkout disable
+2026-09-14T16:31:04.8587426Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-09-14T16:31:04.8631993Z ##[group]Checking out the ref
+2026-09-14T16:31:04.8647113Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-09-14T16:31:04.8723839Z Switched to a new branch 'main'
+2026-09-14T16:31:04.8726753Z branch 'main' set up to track 'origin/main'.
+2026-09-14T16:31:04.8734670Z ##[endgroup]
+2026-09-14T16:31:04.8785812Z [command]/usr/bin/git log -1 --format=%H
+2026-09-14T16:31:04.8819337Z efd59c51643d9eb9be1357b77366d27536bc99cc

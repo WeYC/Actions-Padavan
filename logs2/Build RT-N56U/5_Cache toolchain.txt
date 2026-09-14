@@ -1,0 +1,23 @@
+﻿2026-09-14T16:31:38.4369324Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-09-14T16:31:38.4370943Z ##[group]Run actions/cache@v4
+2026-09-14T16:31:38.4371200Z with:
+2026-09-14T16:31:38.4371460Z   path: /opt/rt-n56u/toolchain-mipsel/toolchain-3.4.x
+2026-09-14T16:31:38.4371831Z   key: toolchain-mipsel-mipsel-linux-uclibc.tar.xz
+2026-09-14T16:31:38.4372158Z   enableCrossOsArchive: false
+2026-09-14T16:31:38.4372410Z   fail-on-cache-miss: false
+2026-09-14T16:31:38.4372648Z   lookup-only: false
+2026-09-14T16:31:38.4372862Z   save-always: false
+2026-09-14T16:31:38.4373066Z env:
+2026-09-14T16:31:38.4373270Z   build_dir: /opt/rt-n56u
+2026-09-14T16:31:38.4373509Z   images_dir: /opt/images
+2026-09-14T16:31:38.4373737Z   work_dir: /opt/rt-n56u/trunk
+2026-09-14T16:31:38.4374074Z   src_git: https://github.com/hanwckf/rt-n56u.git
+2026-09-14T16:31:38.4374426Z   config_dir: /opt/rt-n56u/trunk/configs/templates
+2026-09-14T16:31:38.4374781Z   toolchain_dir: /opt/rt-n56u/toolchain-mipsel/toolchain-3.4.x
+2026-09-14T16:31:38.4375148Z   toolchain_pkg: mipsel-linux-uclibc.tar.xz
+2026-09-14T16:31:38.4375593Z   toolchain_url: https://github.com/TurBoTse/padavan-toolchain/releases/download/toolchain
+2026-09-14T16:31:38.4376034Z   models: rt-n56u R6220
+2026-09-14T16:31:38.4376257Z ##[endgroup]
+2026-09-14T16:31:38.5528781Z (node:3057) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-09-14T16:31:38.5529786Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-09-14T16:31:38.6280657Z Cache not found for input keys: toolchain-mipsel-mipsel-linux-uclibc.tar.xz

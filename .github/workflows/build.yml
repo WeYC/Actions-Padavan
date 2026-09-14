@@ -17,11 +17,12 @@ env:
   toolchain_dir: /opt/rt-n56u/toolchain-mipsel/toolchain-3.4.x
   toolchain_pkg: mipsel-linux-uclibc.tar.xz
   toolchain_url: https://github.com/TurBoTse/padavan-toolchain/releases/download/toolchain
-  models: rt-n56u R6220
+  models: R6220
+  build_variant: mt7621
 
 jobs:
   build:
-    name: Build RT-N56U
+    name: Build Padavan
     runs-on: ubuntu-24.04
     steps:
       - name: Checkout repository
@@ -70,7 +71,7 @@ jobs:
           cd ${{ env.work_dir }}
           for model in ${{ env.models }}; do
             echo "Building $model..."
-            sudo ./build_firmware_ci $model
+            fakeroot ./build_firmware_ci $model
             if [ $? -eq 0 ]; then
               sudo cp -f images/*.trx ${{ env.images_dir }}/Hanwckf_${model}_$(date +%Y%m%d).trx
               echo "Build $model succeeded"
@@ -78,7 +79,7 @@ jobs:
               echo "Build $model failed"
               exit 1
             fi
-            sudo ./clear_tree_simple >/dev/null 2>&1
+            ./clear_tree_simple >/dev/null 2>&1
           done
 
       - name: Upload firmware to Releases
