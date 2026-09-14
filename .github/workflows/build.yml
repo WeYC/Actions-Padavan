@@ -1,0 +1,86 @@
+name: Build Padavan
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/build.yml'
+  workflow_dispatch:
+
+env:
+  build_dir: /opt/rt-n56u
+  images_dir: /opt/images
+  work_dir: /opt/rt-n56u/trunk
+  src_git: https://github.com/hanwckf/rt-n56u.git
+  config_dir: /opt/rt-n56u/trunk/configs/templates
+  toolchain_dir: /opt/rt-n56u/toolchain-mipsel/toolchain-3.4.x
+  toolchain_pkg: mipsel-linux-uclibc.tar.xz
+  toolchain_url: https://github.com/TurBoTse/padavan-toolchain/releases/download/v1.0
+  models: rt-n56u R6220
+
+jobs:
+  build:
+    name: Build RT-N56U
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Prepare environment
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libtool-bin gperf python3-docutils autopoint gettext
+          sudo timedatectl set-timezone 'Asia/Shanghai'
+
+      - name: Clone source code
+        run: |
+          sudo mkdir -p ${{ env.build_dir }} ${{ env.images_dir }}
+          sudo chown -R $USER:$USER ${{ env.build_dir }} ${{ env.images_dir }}
+          git clone --depth=1 ${{ env.src_git }} ${{ env.build_dir }}
+
+      - name: Prepare toolchain
+        run: |
+          mkdir -p ${{ env.toolchain_dir }}
+          curl -LO ${{ env.toolchain_url }}/${{ env.toolchain_pkg }}
+          tar -xf ${{ env.toolchain_pkg }} -C ${{ env.toolchain_dir }}
+          rm -f ${{ env.toolchain_pkg }}
+
+      - name: Copy custom configs
+        run: |
+          for model in ${{ env.models }}; do
+            if [ -f config/${model}.config ]; then
+              sudo cp -f config/${model}.config ${{ env.config_dir }}/${model}.config
+              echo "Copied config for $model"
+            else
+              echo "config/${model}.config not found, using default"
+            fi
+          done
+
+      - name: Build firmware
+        run: |
+          cd ${{ env.work_dir }}
+          for model in ${{ env.models }}; do
+            echo "Building $model..."
+            sudo ./build_firmware_ci $model
+            if [ $? -eq 0 ]; then
+              sudo cp -f images/*.trx ${{ env.images_dir }}/Hanwckf_${model}_$(date +%Y%m%d).trx
+              echo "Build $model succeeded"
+            else
+              echo "Build $model failed"
+              exit 1
+            fi
+            sudo ./clear_tree_simple >/dev/null 2>&1
+          done
+
+      - name: Upload firmware to Releases
+        if: success()
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: Padavan-${{ github.run_number }}
+          name: Padavan Build ${{ github.run_number }}
+          files: ${{ env.images_dir }}/*.trx
+          body: |
+            Padavan firmware for ${{ env.models }}
+            Build date: $(date +%Y-%m-%d)
+            Commit: ${{ github.sha }}
