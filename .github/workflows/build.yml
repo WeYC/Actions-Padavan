@@ -24,34 +24,22 @@ jobs:
         id: cache-toolchain
         uses: actions/cache@v4
         with:
-          path: ${{ github.workspace }}/toolchain-mipsel
-          key: toolchain-mipsel-${{ env.toolchain_pkg }}
+          path: ${{ github.workspace }}/toolchain
+          key: toolchain-v2-${{ env.toolchain_pkg }}
 
       - name: Download toolchain
         if: steps.cache-toolchain.outputs.cache-hit != 'true'
         run: |
-          mkdir -p ${{ github.workspace }}/toolchain-mipsel
+          mkdir -p ${{ github.workspace }}/toolchain
           curl -LO ${{ env.toolchain_url }}/${{ env.toolchain_pkg }}
-          tar -xf ${{ env.toolchain_pkg }} -C ${{ github.workspace }}/toolchain-mipsel
+          tar -xf ${{ env.toolchain_pkg }} -C ${{ github.workspace }}/toolchain
           rm -f ${{ env.toolchain_pkg }}
-
-      - name: Prepare source tree
-        run: |
-          sudo rm -rf /opt/rt-n56u
-          sudo git clone --depth=1 https://github.com/hanwckf/rt-n56u.git /opt/rt-n56u
-          sudo rm -rf /opt/rt-n56u/toolchain-mipsel/toolchain-3.4.x
-          sudo cp -a ${{ github.workspace }}/toolchain-mipsel/toolchain-3.4.x /opt/rt-n56u/toolchain-mipsel/toolchain-3.4.x
-          for model in R6220; do
-            if [ -f config/${model}.config ]; then
-              sudo cp -f config/${model}.config /opt/rt-n56u/trunk/configs/templates/${model}.config
-            fi
-          done
 
       - name: Build firmware in Docker
         run: |
           sudo mkdir -p /opt/images
           docker run --rm \
-            -v "/opt/rt-n56u:/opt/rt-n56u" \
+            -v "${{ github.workspace }}:/workspace" \
             -v "/opt/images:/opt/images" \
             ubuntu:20.04 \
             bash -c '
@@ -61,6 +49,16 @@ jobs:
               apt-get install -y libtool-bin gperf python3-docutils autopoint gettext \
                 git sudo fakeroot ca-certificates
               ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+
+              git clone --depth=1 https://github.com/hanwckf/rt-n56u.git /opt/rt-n56u
+
+              ln -sf /workspace/toolchain /opt/rt-n56u/toolchain-mipsel/toolchain-3.4.x
+
+              for model in R6220; do
+                if [ -f /workspace/config/${model}.config ]; then
+                  cp -f /workspace/config/${model}.config /opt/rt-n56u/trunk/configs/templates/${model}.config
+                fi
+              done
 
               cd /opt/rt-n56u/trunk
               for model in R6220; do
