@@ -24,20 +24,20 @@ jobs:
   build:
     name: Build Padavan
     runs-on: ubuntu-22.04
-    container: ubuntu:20.04
     steps:
-      - name: Install dependencies
-        run: |
-          apt-get update
-          apt-get install -y git libtool-bin gperf python3-docutils autopoint gettext sudo tzdata ca-certificates
-          ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
-
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Prepare environment
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libtool-bin gperf python3-docutils autopoint gettext
+          sudo timedatectl set-timezone 'Asia/Shanghai'
+
       - name: Clone source code
         run: |
-          mkdir -p ${{ env.build_dir }} ${{ env.images_dir }}
+          sudo mkdir -p ${{ env.build_dir }} ${{ env.images_dir }}
+          sudo chown -R $USER:$USER ${{ env.build_dir }} ${{ env.images_dir }}
           git clone --depth=1 ${{ env.src_git }} ${{ env.build_dir }}
 
       - name: Cache toolchain
@@ -59,12 +59,19 @@ jobs:
         run: |
           for model in ${{ env.models }}; do
             if [ -f config/${model}.config ]; then
-              cp -f config/${model}.config ${{ env.config_dir }}/${model}.config
+              sudo cp -f config/${model}.config ${{ env.config_dir }}/${model}.config
               echo "Copied config for $model"
             else
               echo "config/${model}.config not found, using default"
             fi
           done
+
+      - name: Patch kernel for GCC 11 compatibility
+        run: |
+          cd ${{ env.work_dir }}/linux-3.4.x
+          sed -i 's/KBUILD_CFLAGS += -Werror/KBUILD_CFLAGS += -Wno-error/g' Makefile
+          sed -i 's/KBUILD_CFLAGS   := -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs/KBUILD_CFLAGS   := -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -Wno-error/g' Makefile
+          echo "Patched kernel Makefile to disable -Werror"
 
       - name: Build firmware
         run: |
@@ -73,7 +80,7 @@ jobs:
             echo "Building $model..."
             fakeroot ./build_firmware_ci $model
             if [ $? -eq 0 ]; then
-              cp -f images/*.trx ${{ env.images_dir }}/Hanwckf_${model}_$(date +%Y%m%d).trx
+              sudo cp -f images/*.trx ${{ env.images_dir }}/Hanwckf_${model}_$(date +%Y%m%d).trx
               echo "Build $model succeeded"
             else
               echo "Build $model failed"
