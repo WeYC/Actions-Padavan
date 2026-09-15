@@ -28,18 +28,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Prepare environment
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y libtool-bin gperf python3-docutils autopoint gettext
-          sudo timedatectl set-timezone 'Asia/Shanghai'
-
-      - name: Clone source code
-        run: |
-          sudo mkdir -p ${{ env.build_dir }} ${{ env.images_dir }}
-          sudo chown -R $USER:$USER ${{ env.build_dir }} ${{ env.images_dir }}
-          git clone --depth=1 ${{ env.src_git }} ${{ env.build_dir }}
-
       - name: Cache toolchain
         id: cache-toolchain
         uses: actions/cache@v4
@@ -55,45 +43,46 @@ jobs:
           tar -xf ${{ env.toolchain_pkg }} -C ${{ env.toolchain_dir }}
           rm -f ${{ env.toolchain_pkg }}
 
-      - name: Copy custom configs
+      - name: Build firmware in Docker
         run: |
-          for model in ${{ env.models }}; do
-            if [ -f config/${model}.config ]; then
-              sudo cp -f config/${model}.config ${{ env.config_dir }}/${model}.config
-              echo "Copied config for $model"
-            else
-              echo "config/${model}.config not found, using default"
-            fi
-          done
+          sudo mkdir -p ${{ env.images_dir }}
+          docker run --rm \
+            -v "$(pwd):/workspace" \
+            -v "${{ env.toolchain_dir }}:/opt/rt-n56u/toolchain-mipsel/toolchain-3.4.x" \
+            -v "${{ env.images_dir }}:/opt/images" \
+            -e images_dir=/opt/images \
+            ubuntu:20.04 \
+            bash -c '
+              set -e
+              export DEBIAN_FRONTEND=noninteractive
+              apt-get update
+              apt-get install -y libtool-bin gperf python3-docutils autopoint gettext \
+                git sudo fakeroot ca-certificates
+              ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
-      - name: Patch kernel for GCC 11 compatibility
-        run: |
-          cd ${{ env.work_dir }}/linux-3.4.x
-          find . -name Makefile -exec grep -l '\-Werror' {} \; | head -20 | while read f; do
-            sed -i 's/-Werror/-Wno-error/g' "$f"
-          done
-          if [ -f include/linux/log2.h ]; then
-            sed -i 's/__attribute__((const, __noreturn__))/__attribute__((__noreturn__))/g' include/linux/log2.h
-            sed -i 's/__attribute__((noreturn, const))/__attribute__((__noreturn__))/g' include/linux/log2.h
-          fi
-          echo "Patched kernel for GCC 11 compatibility"
+              mkdir -p /opt/rt-n56u
+              git clone --depth=1 https://github.com/hanwckf/rt-n56u.git /opt/rt-n56u
 
-      - name: Build firmware
-        run: |
-          cd ${{ env.work_dir }}
-          export KCFLAGS="-Wno-error"
-          for model in ${{ env.models }}; do
-            echo "Building $model..."
-            fakeroot ./build_firmware_ci $model
-            if [ $? -eq 0 ]; then
-              sudo cp -f images/*.trx ${{ env.images_dir }}/Hanwckf_${model}_$(date +%Y%m%d).trx
-              echo "Build $model succeeded"
-            else
-              echo "Build $model failed"
-              exit 1
-            fi
-            ./clear_tree_simple >/dev/null 2>&1
-          done
+              for model in R6220; do
+                if [ -f /workspace/config/${model}.config ]; then
+                  cp -f /workspace/config/${model}.config /opt/rt-n56u/trunk/configs/templates/${model}.config
+                fi
+              done
+
+              cd /opt/rt-n56u/trunk
+              for model in R6220; do
+                echo "Building $model..."
+                fakeroot ./build_firmware_ci $model
+                if [ $? -eq 0 ]; then
+                  cp -f images/*.trx /opt/images/Hanwckf_${model}_$(date +%Y%m%d).trx
+                  echo "Build $model succeeded"
+                else
+                  echo "Build $model failed"
+                  exit 1
+                fi
+                ./clear_tree_simple >/dev/null 2>&1
+              done
+            '
 
       - name: Upload firmware to Releases
         if: success()
