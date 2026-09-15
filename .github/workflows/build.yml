@@ -69,13 +69,19 @@ jobs:
       - name: Patch kernel for GCC 11 compatibility
         run: |
           cd ${{ env.work_dir }}/linux-3.4.x
-          sed -i 's/KBUILD_CFLAGS += -Werror/KBUILD_CFLAGS += -Wno-error/g' Makefile
-          sed -i 's/KBUILD_CFLAGS   := -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs/KBUILD_CFLAGS   := -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -Wno-error/g' Makefile
-          echo "Patched kernel Makefile to disable -Werror"
+          find . -name Makefile -exec grep -l '\-Werror' {} \; | head -20 | while read f; do
+            sed -i 's/-Werror/-Wno-error/g' "$f"
+          done
+          if [ -f include/linux/log2.h ]; then
+            sed -i 's/__attribute__((const, __noreturn__))/__attribute__((__noreturn__))/g' include/linux/log2.h
+            sed -i 's/__attribute__((noreturn, const))/__attribute__((__noreturn__))/g' include/linux/log2.h
+          fi
+          echo "Patched kernel for GCC 11 compatibility"
 
       - name: Build firmware
         run: |
           cd ${{ env.work_dir }}
+          export KCFLAGS="-Wno-error"
           for model in ${{ env.models }}; do
             echo "Building $model..."
             fakeroot ./build_firmware_ci $model
