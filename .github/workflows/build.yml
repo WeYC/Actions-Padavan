@@ -48,7 +48,7 @@ jobs:
           sudo mkdir -p ${{ env.images_dir }}
           docker run --rm \
             -v "$(pwd):/workspace" \
-            -v "${{ env.toolchain_dir }}:/opt/rt-n56u/toolchain-mipsel/toolchain-3.4.x" \
+            -v "${{ env.toolchain_dir }}:/toolchain" \
             -v "${{ env.images_dir }}:/opt/images" \
             -e images_dir=/opt/images \
             ubuntu:20.04 \
@@ -60,8 +60,8 @@ jobs:
                 git sudo fakeroot ca-certificates
               ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
-              mkdir -p /opt/rt-n56u
               git clone --depth=1 https://github.com/hanwckf/rt-n56u.git /opt/rt-n56u
+              ln -sf /toolchain /opt/rt-n56u/toolchain-mipsel/toolchain-3.4.x
 
               for model in R6220; do
                 if [ -f /workspace/config/${model}.config ]; then
