@@ -8,10 +8,6 @@ on:
       - '.github/workflows/build.yml'
   workflow_dispatch:
 
-env:
-  toolchain_pkg: mipsel-linux-uclibc.tar.xz
-  toolchain_url: https://github.com/TurBoTse/padavan-toolchain/releases/download/toolchain
-
 jobs:
   build:
     name: Build Padavan
@@ -19,21 +15,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
-      - name: Cache toolchain
-        id: cache-toolchain
-        uses: actions/cache@v4
-        with:
-          path: ${{ github.workspace }}/toolchain
-          key: toolchain-v2-${{ env.toolchain_pkg }}
-
-      - name: Download toolchain
-        if: steps.cache-toolchain.outputs.cache-hit != 'true'
-        run: |
-          mkdir -p ${{ github.workspace }}/toolchain
-          curl -LO ${{ env.toolchain_url }}/${{ env.toolchain_pkg }}
-          tar -xf ${{ env.toolchain_pkg }} -C ${{ github.workspace }}/toolchain
-          rm -f ${{ env.toolchain_pkg }}
 
       - name: Build firmware in Docker
         run: |
@@ -47,12 +28,14 @@ jobs:
               export DEBIAN_FRONTEND=noninteractive
               apt-get update
               apt-get install -y libtool-bin gperf python3-docutils autopoint gettext \
-                git sudo fakeroot ca-certificates
+                git sudo fakeroot ca-certificates xz-utils curl
               ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
               git clone --depth=1 https://github.com/hanwckf/rt-n56u.git /opt/rt-n56u
 
-              ln -sf /workspace/toolchain /opt/rt-n56u/toolchain-mipsel/toolchain-3.4.x
+              curl -L https://github.com/TurBoTse/padavan-toolchain/releases/download/toolchain/mipsel-linux-uclibc.tar.xz -o /tmp/toolchain.tar.xz
+              tar -xf /tmp/toolchain.tar.xz -C /opt/rt-n56u/toolchain-mipsel/
+              rm -f /tmp/toolchain.tar.xz
 
               for model in R6220; do
                 if [ -f /workspace/config/${model}.config ]; then
