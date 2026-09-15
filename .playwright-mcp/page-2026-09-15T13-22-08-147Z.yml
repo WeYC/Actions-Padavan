@@ -1,0 +1,193 @@
+- generic [ref=e2]:
+  - generic [ref=e3]:
+    - link "Skip to content" [ref=e4] [cursor=pointer]:
+      - /url: "#start-of-content"
+    - banner [ref=e9]:
+      - heading "Navigation Menu" [level=2] [ref=e10]
+      - generic [ref=e11]:
+        - link "Homepage" [ref=e13] [cursor=pointer]:
+          - /url: /
+        - generic [ref=e16]:
+          - navigation "Global" [ref=e17]:
+            - list [ref=e18]:
+              - listitem [ref=e19]:
+                - button "Platform" [ref=e21] [cursor=pointer]
+              - listitem [ref=e24]:
+                - button "Solutions" [ref=e26] [cursor=pointer]
+              - listitem [ref=e29]:
+                - button "Resources" [ref=e31] [cursor=pointer]
+              - listitem [ref=e34]:
+                - button "Open Source" [ref=e36] [cursor=pointer]
+              - listitem [ref=e39]:
+                - button "Enterprise" [ref=e41] [cursor=pointer]
+              - listitem [ref=e44]:
+                - link "Pricing" [ref=e45] [cursor=pointer]:
+                  - /url: https://github.com/pricing
+          - generic [ref=e46]:
+            - button "Search or jump to, type / to search" [ref=e48] [cursor=pointer]
+            - link "Sign in" [ref=e55] [cursor=pointer]:
+              - /url: /login?return_to=https%3A%2F%2Fgithub.com%2FWeYC%2FActions-Padavan%2Factions%2Fruns%2F34969657432
+            - link "Sign up" [ref=e58] [cursor=pointer]:
+              - /url: /signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F%3Cuser-name%3E%2F%3Crepo-name%3E%2Factions%2Fworkflow_runs%2Fshow&source=header-repo&source_repo=WeYC%2FActions-Padavan
+            - button "Appearance settings" [ref=e61] [cursor=pointer]
+  - main [ref=e68]:
+    - generic [ref=e69]:
+      - generic [ref=e70]:
+        - generic [ref=e71]:
+          - generic [ref=e73]:
+            - link "WeYC" [ref=e77] [cursor=pointer]:
+              - /url: /WeYC
+            - generic [ref=e78]: /
+            - strong [ref=e79]:
+              - link "Actions-Padavan" [ref=e80] [cursor=pointer]:
+                - /url: /WeYC/Actions-Padavan
+            - generic [ref=e81]: Public
+          - generic [ref=e82]:
+            - list:
+              - listitem [ref=e83]:
+                - link "You must be signed in to change notification settings" [ref=e84] [cursor=pointer]:
+                  - /url: /login?return_to=%2FWeYC%2FActions-Padavan
+                  - text: Notifications
+              - listitem [ref=e87]:
+                - link "Fork 0" [ref=e88] [cursor=pointer]:
+                  - /url: /login?return_to=%2FWeYC%2FActions-Padavan
+                  - text: Fork
+                  - generic "0" [ref=e91]
+              - listitem [ref=e92]:
+                - link "You must be signed in to star a repository" [ref=e94] [cursor=pointer]:
+                  - /url: /login?return_to=%2FWeYC%2FActions-Padavan
+                  - text: Star
+                  - generic "0 users starred this repository" [ref=e97]: "0"
+        - navigation "Repository" [ref=e98]:
+          - list [ref=e99]:
+            - listitem [ref=e100]:
+              - link "Code" [ref=e101] [cursor=pointer]:
+                - /url: /WeYC/Actions-Padavan
+            - listitem [ref=e105]:
+              - link "Issues" [ref=e106] [cursor=pointer]:
+                - /url: /WeYC/Actions-Padavan/issues
+            - listitem [ref=e111]:
+              - link "Pull requests" [ref=e112] [cursor=pointer]:
+                - /url: /WeYC/Actions-Padavan/pulls
+            - listitem [ref=e116]:
+              - link "Actions" [ref=e117] [cursor=pointer]:
+                - /url: /WeYC/Actions-Padavan/actions
+            - listitem [ref=e121]:
+              - link "Projects" [ref=e122] [cursor=pointer]:
+                - /url: /WeYC/Actions-Padavan/projects
+            - listitem [ref=e126]:
+              - link "Security and quality" [ref=e127] [cursor=pointer]:
+                - /url: /WeYC/Actions-Padavan/security
+            - listitem [ref=e131]:
+              - link "Insights" [ref=e132] [cursor=pointer]:
+                - /url: /WeYC/Actions-Padavan/pulse
+      - generic [ref=e140]:
+        - generic [ref=e143]:
+          - link "Build Padavan" [ref=e146] [cursor=pointer]:
+            - /url: /WeYC/Actions-Padavan/actions/workflows/build.yml
+          - generic [ref=e150]:
+            - generic [ref=e151]:
+              - img "failed:" [ref=e155]
+              - 'heading "fix: mount toolchain separately and symlink to avoid dir conflict #13" [level=1] [ref=e157]'
+            - link "Sign in to view logs" [ref=e161] [cursor=pointer]:
+              - /url: /login?return_to=https%3A%2F%2Fgithub.com%2FWeYC%2FActions-Padavan%2Factions%2Fruns%2F34969657432
+        - generic [ref=e162]:
+          - navigation "Workflow run" [ref=e168]:
+            - list [ref=e169]:
+              - listitem [ref=e170]:
+                - link "Summary" [ref=e171] [cursor=pointer]:
+                  - /url: /WeYC/Actions-Padavan/actions/runs/34969657432
+              - generic [ref=e174]:
+                - heading "All jobs" [level=4] [ref=e175]
+                - button "Filter by job status" [ref=e176] [cursor=pointer]
+              - listitem [aria-hidden] [ref=e179]
+              - listitem:
+                - list
+              - listitem [aria-hidden] [ref=e180]
+              - listitem [ref=e181]:
+                - heading "Run details" [level=3] [ref=e183]
+                - list "Run details" [ref=e184]:
+                  - listitem [ref=e185]:
+                    - link "Usage" [ref=e186] [cursor=pointer]:
+                      - /url: /WeYC/Actions-Padavan/actions/runs/34969657432/usage
+                  - listitem [ref=e189]:
+                    - link "Workflow file" [ref=e190] [cursor=pointer]:
+                      - /url: /WeYC/Actions-Padavan/actions/runs/34969657432/workflow
+          - generic [ref=e194]:
+            - region "Workflow run summary" [ref=e195]:
+              - generic [ref=e196]:
+                - generic [ref=e197]:
+                  - generic [ref=e198]: Triggered via push September 15, 2026 12:3447 minutes ago
+                  - generic [ref=e199]:
+                    - link [ref=e200] [cursor=pointer]:
+                      - /url: /WeYC
+                      - img "@WeYC" [ref=e201]
+                      - text: WeYC
+                    - generic [ref=e202]:
+                      - generic [ref=e203]: pushed
+                      - link "d9efef7" [ref=e204] [cursor=pointer]:
+                        - /url: /WeYC/Actions-Padavan/commit/d9efef7c6d10453d6d257888642cbc11f1266e59
+                    - link "main" [ref=e207] [cursor=pointer]:
+                      - /url: /WeYC/Actions-Padavan/tree/refs/heads/main
+                - generic [ref=e208]:
+                  - generic [ref=e209]: Status
+                  - text: Failure
+                - generic [ref=e210]:
+                  - generic [ref=e211]: Total duration
+                  - link "1m 31s" [ref=e212] [cursor=pointer]:
+                    - /url: /WeYC/Actions-Padavan/actions/runs/34969657432/usage
+                - generic [ref=e213]:
+                  - generic [ref=e214]: Artifacts
+                  - text: –
+            - region "Workflow run graph" [ref=e215]:
+              - generic [ref=e217]:
+                - generic [ref=e219]:
+                  - heading [level=2] [ref=e220]:
+                    - link "build.yml" [ref=e221] [cursor=pointer]:
+                      - /url: /WeYC/Actions-Padavan/actions/runs/34969657432/workflow
+                  - generic [ref=e222]: "on: push"
+                - generic [ref=e224]:
+                  - 'link "failed: Build Padavan 1m 29s" [ref=e229] [cursor=pointer]':
+                    - /url: /WeYC/Actions-Padavan/actions/runs/34969657432/job/104382540900
+                    - generic [ref=e231]:
+                      - img "failed:" [ref=e233]
+                      - generic [ref=e235]: Build Padavan
+                      - generic [ref=e237]: 1m 29s
+                  - generic [aria-hidden] [ref=e238]:
+                    - paragraph [ref=e239]: Oh hello! Nice to see you.
+                    - paragraph [ref=e240]:
+                      - text: Made with ❤️ by
+                      - link [ref=e241] [cursor=pointer]:
+                        - /url: https://actions.github.io/humans.txt
+                        - text: humans.txt
+                - generic [ref=e242]:
+                  - button "Fit to window" [disabled] [ref=e243]
+                  - generic [ref=e244]:
+                    - button "Zoom out" [disabled] [ref=e246]
+                    - button "Zoom in" [disabled] [ref=e248]
+            - region "Annotations" [ref=e249]:
+              - generic [ref=e250]:
+                - generic [ref=e252]:
+                  - heading "Annotations" [level=2] [ref=e253]
+                  - generic [ref=e254]: 1 error and 1 warning
+                - table [ref=e255]:
+                  - rowgroup [ref=e256]:
+                    - row [ref=e257]:
+                      - cell "Build Padavan Process completed with exit code 1." [ref=e258]:
+                        - generic [ref=e263]:
+                          - link [ref=e264] [cursor=pointer]:
+                            - /url: /WeYC/Actions-Padavan/actions/runs/34969657432/job/104382540900#step:5:1142
+                            - strong [ref=e265]: Build Padavan
+                          - generic [ref=e266]: Process completed with exit code 1.
+                    - row [ref=e269]:
+                      - cell [ref=e270]:
+                        - generic [ref=e275]:
+                          - link [ref=e276] [cursor=pointer]:
+                            - /url: /WeYC/Actions-Padavan/actions/runs/34969657432/job/104382540900#step:13:2
+                            - strong [ref=e277]: Build Padavan
+                          - generic [ref=e278]:
+                            - generic [ref=e280]:
+                              - text: "Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/cache@v4, actions/checkout@v4. For more information see:"
+                              - link "https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/" [ref=e281] [cursor=pointer]:
+                                - /url: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+                            - button "Show more" [ref=e282] [cursor=pointer]

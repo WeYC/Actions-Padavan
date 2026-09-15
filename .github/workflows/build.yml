@@ -43,12 +43,22 @@ jobs:
           tar -xf ${{ env.toolchain_pkg }} -C ${{ env.toolchain_dir }}
           rm -f ${{ env.toolchain_pkg }}
 
+      - name: Clone source and prepare build tree
+        run: |
+          sudo mkdir -p /opt/rt-n56u
+          sudo git clone --depth=1 https://github.com/hanwckf/rt-n56u.git /opt/rt-n56u
+          sudo ln -sf ${{ env.toolchain_dir }} /opt/rt-n56u/toolchain-mipsel/toolchain-3.4.x
+          for model in R6220; do
+            if [ -f config/${model}.config ]; then
+              sudo cp -f config/${model}.config /opt/rt-n56u/trunk/configs/templates/${model}.config
+            fi
+          done
+
       - name: Build firmware in Docker
         run: |
           sudo mkdir -p ${{ env.images_dir }}
           docker run --rm \
-            -v "$(pwd):/workspace" \
-            -v "${{ env.toolchain_dir }}:/toolchain" \
+            -v "/opt/rt-n56u:/opt/rt-n56u" \
             -v "${{ env.images_dir }}:/opt/images" \
             -e images_dir=/opt/images \
             ubuntu:20.04 \
@@ -59,15 +69,6 @@ jobs:
               apt-get install -y libtool-bin gperf python3-docutils autopoint gettext \
                 git sudo fakeroot ca-certificates
               ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
-
-              git clone --depth=1 https://github.com/hanwckf/rt-n56u.git /opt/rt-n56u
-              ln -sf /toolchain /opt/rt-n56u/toolchain-mipsel/toolchain-3.4.x
-
-              for model in R6220; do
-                if [ -f /workspace/config/${model}.config ]; then
-                  cp -f /workspace/config/${model}.config /opt/rt-n56u/trunk/configs/templates/${model}.config
-                fi
-              done
 
               cd /opt/rt-n56u/trunk
               for model in R6220; do
