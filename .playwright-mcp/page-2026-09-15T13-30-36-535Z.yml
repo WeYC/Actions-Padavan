@@ -1,0 +1,137 @@
+- generic [ref=f3e2]:
+  - generic [ref=f3e3]:
+    - link "Skip to content" [ref=f3e4] [cursor=pointer]:
+      - /url: "#start-of-content"
+    - banner [ref=f3e9]:
+      - heading "Navigation Menu" [level=2] [ref=f3e10]
+      - generic [ref=f3e11]:
+        - link "Homepage" [ref=f3e13] [cursor=pointer]:
+          - /url: /
+        - generic [ref=f3e16]:
+          - navigation "Global" [ref=f3e17]:
+            - list [ref=f3e18]:
+              - listitem [ref=f3e19]:
+                - button "Platform" [ref=f3e21] [cursor=pointer]
+              - listitem [ref=f3e24]:
+                - button "Solutions" [ref=f3e26] [cursor=pointer]
+              - listitem [ref=f3e29]:
+                - button "Resources" [ref=f3e31] [cursor=pointer]
+              - listitem [ref=f3e34]:
+                - button "Open Source" [ref=f3e36] [cursor=pointer]
+              - listitem [ref=f3e39]:
+                - button "Enterprise" [ref=f3e41] [cursor=pointer]
+              - listitem [ref=f3e44]:
+                - link "Pricing" [ref=f3e45] [cursor=pointer]:
+                  - /url: https://github.com/pricing
+          - generic [ref=f3e46]:
+            - button "Search or jump to, type / to search" [ref=f3e48] [cursor=pointer]
+            - link "Sign in" [ref=f3e55] [cursor=pointer]:
+              - /url: /login?return_to=https%3A%2F%2Fgithub.com%2FWeYC%2FActions-Padavan%2Factions%2Fruns%2F34974978661%2Fjob%2F104400312097
+            - link "Sign up" [ref=f3e58] [cursor=pointer]:
+              - /url: /signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F%3Cuser-name%3E%2F%3Crepo-name%3E%2Factions%2Fjob%2Findex&source=header-repo&source_repo=WeYC%2FActions-Padavan
+            - button "Appearance settings" [ref=f3e61] [cursor=pointer]
+  - main [ref=f3e68]:
+    - generic [ref=f3e69]:
+      - generic [ref=f3e70]:
+        - generic [ref=f3e71]:
+          - generic [ref=f3e73]:
+            - link "WeYC" [ref=f3e77] [cursor=pointer]:
+              - /url: /WeYC
+            - generic [ref=f3e78]: /
+            - strong [ref=f3e79]:
+              - link "Actions-Padavan" [ref=f3e80] [cursor=pointer]:
+                - /url: /WeYC/Actions-Padavan
+            - generic [ref=f3e81]: Public
+          - generic [ref=f3e82]:
+            - list:
+              - listitem [ref=f3e83]:
+                - link "You must be signed in to change notification settings" [ref=f3e84] [cursor=pointer]:
+                  - /url: /login?return_to=%2FWeYC%2FActions-Padavan
+                  - text: Notifications
+              - listitem [ref=f3e87]:
+                - link "Fork 0" [ref=f3e88] [cursor=pointer]:
+                  - /url: /login?return_to=%2FWeYC%2FActions-Padavan
+                  - text: Fork
+                  - generic "0" [ref=f3e91]
+              - listitem [ref=f3e92]:
+                - link "You must be signed in to star a repository" [ref=f3e94] [cursor=pointer]:
+                  - /url: /login?return_to=%2FWeYC%2FActions-Padavan
+                  - text: Star
+                  - generic "0 users starred this repository" [ref=f3e97]: "0"
+        - navigation "Repository" [ref=f3e98]:
+          - list [ref=f3e99]:
+            - listitem [ref=f3e100]:
+              - link "Code" [ref=f3e101] [cursor=pointer]:
+                - /url: /WeYC/Actions-Padavan
+            - listitem [ref=f3e105]:
+              - link "Issues" [ref=f3e106] [cursor=pointer]:
+                - /url: /WeYC/Actions-Padavan/issues
+            - listitem [ref=f3e111]:
+              - link "Pull requests" [ref=f3e112] [cursor=pointer]:
+                - /url: /WeYC/Actions-Padavan/pulls
+            - listitem [ref=f3e116]:
+              - link "Actions" [ref=f3e117] [cursor=pointer]:
+                - /url: /WeYC/Actions-Padavan/actions
+            - listitem [ref=f3e121]:
+              - link "Projects" [ref=f3e122] [cursor=pointer]:
+                - /url: /WeYC/Actions-Padavan/projects
+            - listitem [ref=f3e126]:
+              - link "Security and quality" [ref=f3e127] [cursor=pointer]:
+                - /url: /WeYC/Actions-Padavan/security
+            - listitem [ref=f3e131]:
+              - link "Insights" [ref=f3e132] [cursor=pointer]:
+                - /url: /WeYC/Actions-Padavan/pulse
+      - generic [ref=f3e140]:
+        - generic [ref=f3e143]:
+          - link "Build Padavan" [ref=f3e146] [cursor=pointer]:
+            - /url: /WeYC/Actions-Padavan/actions/workflows/build.yml
+          - generic [ref=f3e150]:
+            - generic [ref=f3e151]:
+              - img "failed:" [ref=f3e155]
+              - 'heading "fix: clone source outside Docker, mount entire tree, no more symlink … #14" [level=1] [ref=f3e157]'
+            - link "Sign in to view logs" [ref=f3e161] [cursor=pointer]:
+              - /url: /login?return_to=https%3A%2F%2Fgithub.com%2FWeYC%2FActions-Padavan%2Factions%2Fruns%2F34974978661%2Fjob%2F104400312097
+        - region "Check run summary" [ref=f3e165]:
+          - generic [ref=f3e166]:
+            - region "Annotations" [ref=f3e168]:
+              - generic [ref=f3e172]:
+                - button "Open job annotations" [ref=f3e174] [cursor=pointer]
+                - generic [ref=f3e179]:
+                  - heading "Annotations" [level=2] [ref=f3e180]
+                  - generic [ref=f3e181]: 1 error and 1 warning
+            - generic [ref=f3e183]:
+              - generic [ref=f3e185]:
+                - link "Build Padavan" [ref=f3e188] [cursor=pointer]:
+                  - /url: "#logs"
+                - generic [ref=f3e190]: failed Sep 15, 20264 minutes ago in 10s
+              - generic [ref=f3e192]:
+                - generic [ref=f3e193]:
+                  - group:
+                    - generic "Set up job"
+                - generic [ref=f3e194]:
+                  - group:
+                    - generic "Checkout repository"
+                - generic [ref=f3e195]:
+                  - group:
+                    - generic "Cache toolchain"
+                - generic [ref=f3e196]:
+                  - group:
+                    - generic "Prepare toolchain"
+                - generic [ref=f3e197]:
+                  - group:
+                    - generic "Clone source and prepare build tree"
+                - generic [ref=f3e198]:
+                  - group:
+                    - generic "Build firmware in Docker"
+                - generic [ref=f3e199]:
+                  - group:
+                    - generic "Upload firmware to Releases"
+                - generic [ref=f3e200]:
+                  - group:
+                    - generic "Post Cache toolchain"
+                - generic [ref=f3e201]:
+                  - group:
+                    - generic "Post Checkout repository"
+                - generic [ref=f3e202]:
+                  - group:
+                    - generic "Complete job"

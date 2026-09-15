@@ -9,16 +9,8 @@ on:
   workflow_dispatch:
 
 env:
-  build_dir: /opt/rt-n56u
-  images_dir: /opt/images
-  work_dir: /opt/rt-n56u/trunk
-  src_git: https://github.com/hanwckf/rt-n56u.git
-  config_dir: /opt/rt-n56u/trunk/configs/templates
-  toolchain_dir: /opt/rt-n56u/toolchain-mipsel/toolchain-3.4.x
   toolchain_pkg: mipsel-linux-uclibc.tar.xz
   toolchain_url: https://github.com/TurBoTse/padavan-toolchain/releases/download/toolchain
-  models: R6220
-  build_variant: mt7621
 
 jobs:
   build:
@@ -32,22 +24,23 @@ jobs:
         id: cache-toolchain
         uses: actions/cache@v4
         with:
-          path: ${{ env.toolchain_dir }}
+          path: ${{ github.workspace }}/toolchain-mipsel
           key: toolchain-mipsel-${{ env.toolchain_pkg }}
 
-      - name: Prepare toolchain
+      - name: Download toolchain
         if: steps.cache-toolchain.outputs.cache-hit != 'true'
         run: |
-          mkdir -p ${{ env.toolchain_dir }}
+          mkdir -p ${{ github.workspace }}/toolchain-mipsel
           curl -LO ${{ env.toolchain_url }}/${{ env.toolchain_pkg }}
-          tar -xf ${{ env.toolchain_pkg }} -C ${{ env.toolchain_dir }}
+          tar -xf ${{ env.toolchain_pkg }} -C ${{ github.workspace }}/toolchain-mipsel
           rm -f ${{ env.toolchain_pkg }}
 
-      - name: Clone source and prepare build tree
+      - name: Prepare source tree
         run: |
-          sudo mkdir -p /opt/rt-n56u
+          sudo rm -rf /opt/rt-n56u
           sudo git clone --depth=1 https://github.com/hanwckf/rt-n56u.git /opt/rt-n56u
-          sudo ln -sf ${{ env.toolchain_dir }} /opt/rt-n56u/toolchain-mipsel/toolchain-3.4.x
+          sudo rm -rf /opt/rt-n56u/toolchain-mipsel/toolchain-3.4.x
+          sudo cp -a ${{ github.workspace }}/toolchain-mipsel/toolchain-3.4.x /opt/rt-n56u/toolchain-mipsel/toolchain-3.4.x
           for model in R6220; do
             if [ -f config/${model}.config ]; then
               sudo cp -f config/${model}.config /opt/rt-n56u/trunk/configs/templates/${model}.config
@@ -56,11 +49,10 @@ jobs:
 
       - name: Build firmware in Docker
         run: |
-          sudo mkdir -p ${{ env.images_dir }}
+          sudo mkdir -p /opt/images
           docker run --rm \
             -v "/opt/rt-n56u:/opt/rt-n56u" \
-            -v "${{ env.images_dir }}:/opt/images" \
-            -e images_dir=/opt/images \
+            -v "/opt/images:/opt/images" \
             ubuntu:20.04 \
             bash -c '
               set -e
@@ -91,8 +83,8 @@ jobs:
         with:
           tag_name: Padavan-${{ github.run_number }}
           name: Padavan Build ${{ github.run_number }}
-          files: ${{ env.images_dir }}/*.trx
+          files: /opt/images/*.trx
           body: |
-            Padavan firmware for ${{ env.models }}
+            Padavan firmware for R6220
             Build date: $(date +%Y-%m-%d)
             Commit: ${{ github.sha }}
